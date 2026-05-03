@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CodePath — Learn to Code</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="logo" onclick="goHome()">Code<span>Path</span></div>
+  <div class="nav-pills">
+    <button class="pill py"   onclick="openLang('python')">🐍 Python</button>
+    <button class="pill html" onclick="openLang('html')">🌐 HTML</button>
+    <button class="pill js"   onclick="openLang('js')">⚡ JS</button>
+    <button class="pill cpp"  onclick="openLang('cpp')">⚙️ C++</button>
+  </div>
+  <div id="npw" class="npw">
+    <span id="npl"></span>
+    <div class="npbar"><div id="npfill"></div></div>
+  </div>
+</nav>
+<div class="pstrip"><div id="psfill"></div></div>
+
+<!-- HOME -->
+<div id="vHome" class="view on">
+  <div class="hero">
+    <div class="htag">✦ Free · Beginner Friendly · Interactive</div>
+    <h1>Learn to Code<br><span class="g">From Scratch</span></h1>
+    <p>Step-by-step lessons for complete beginners. No setup needed.</p>
+  </div>
+  <div class="lgrid">
+    <div class="lcard py"   onclick="openLang('python')">
+      <div class="lci">🐍</div><div class="lcn">Python</div>
+      <div class="lcd">Great first language. AI, data, and web.</div>
+      <div class="lcm"><span>15 lessons</span><span class="lcp" id="pct-python">0%</span></div>
+      <div class="lcbar"><div class="lcbf py" id="bf-python"></div></div>
+      <div class="lcgo">Start Learning →</div>
+    </div>
+    <div class="lcard html" onclick="openLang('html')">
+      <div class="lci">🌐</div><div class="lcn">HTML</div>
+      <div class="lcd">Build web pages. Foundation of every website.</div>
+      <div class="lcm"><span>15 lessons</span><span class="lcp" id="pct-html">0%</span></div>
+      <div class="lcbar"><div class="lcbf html" id="bf-html"></div></div>
+      <div class="lcgo">Start Learning →</div>
+    </div>
+    <div class="lcard js"   onclick="openLang('js')">
+      <div class="lci">⚡</div><div class="lcn">JavaScript</div>
+      <div class="lcd">Make websites interactive. Runs in every browser.</div>
+      <div class="lcm"><span>15 lessons</span><span class="lcp" id="pct-js">0%</span></div>
+      <div class="lcbar"><div class="lcbf js" id="bf-js"></div></div>
+      <div class="lcgo">Start Learning →</div>
+    </div>
+    <div class="lcard cpp"  onclick="openLang('cpp')">
+      <div class="lci">⚙️</div><div class="lcn">C++</div>
+      <div class="lcd">Games, OS, and high-performance software.</div>
+      <div class="lcm"><span>15 lessons</span><span class="lcp" id="pct-cpp">0%</span></div>
+      <div class="lcbar"><div class="lcbf cpp" id="bf-cpp"></div></div>
+      <div class="lcgo">Start Learning →</div>
+    </div>
+  </div>
+</div>
+
+<!-- PICKER -->
+<div id="vPicker" class="view">
+  <div class="pkrhdr">
+    <button class="backbtn" onclick="goHome()">← Home</button>
+    <div>
+      <div class="pkrname" id="pkrname"></div>
+      <div class="pkrsub"  id="pkrsub"></div>
+    </div>
+  </div>
+  <div class="lcards" id="lcards"></div>
+</div>
+
+<!-- LESSON -->
+<div id="vLesson" class="view">
+  <div class="ltop">
+    <button class="backbtn" onclick="goBack()">← Lessons</button>
+    <div class="ltopmid">
+      <span class="lbadge" id="lbadge"></span>
+      <span class="lstep"  id="lstep"></span>
+    </div>
+    <div class="ltopnav">
+      <button id="bprev" class="snav" onclick="prevL()">‹ Prev</button>
+      <button id="bnext" class="snav hi"  onclick="nextL()">Next ›</button>
+    </div>
+  </div>
+
+  <div class="lbody">
+    <div class="lmain">
+      <h1 class="ltitle"  id="ltitle"></h1>
+      <p  class="lsub"    id="lsub"></p>
+      <p  class="lintro"  id="lintro"></p>
+
+      <div class="slbl">KEY CONCEPTS</div>
+      <div class="cgrid" id="cgrid"></div>
+
+      <div class="slbl">CODE EXAMPLE</div>
+      <div class="cblock">
+        <div class="chdr">
+          <div class="cdots"><span></span><span></span><span></span></div>
+          <span class="cfn" id="cfn"></span>
+          <button class="cpbtn" onclick="copyCode()">Copy</button>
+        </div>
+        <pre class="cpre" id="cpre"></pre>
+      </div>
+
+      <div class="slbl">LINE-BY-LINE BREAKDOWN</div>
+      <div class="bkdn" id="bkdn"></div>
+
+      <!-- NO FORM TAG — just divs and buttons -->
+      <div id="trysec" style="display:none">
+        <div class="slbl">⚡ TRY IT YOURSELF</div>
+        <div class="edwrap">
+          <textarea class="codearea" id="codearea" spellcheck="false"></textarea>
+          <div class="edftr">
+            <button class="runbtn" onclick="runMain()">▶ Run</button>
+            <button class="clrbtn" onclick="clrMain()">✕ Clear</button>
+          </div>
+        </div>
+        <div class="outbox" id="outbox"></div>
+      </div>
+    </div>
+
+    <div class="lside">
+      <div class="sidesticky">
+        <div class="qcard">
+          <div class="qlbl">🧠 QUICK QUIZ</div>
+          <div id="mcqwrap"></div>
+          <div class="qscore" id="qscore"></div>
+        </div>
+        <div id="chsec" style="display:none">
+          <div class="slbl" style="margin-top:22px">💻 CODING CHALLENGES</div>
+          <div id="chwrap"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="lessons.js"></script>
+<script src="runner.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
